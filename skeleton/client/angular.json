@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "client": {
+    "@grails.app.name@": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/client",
+            "outputPath": "dist/@grails.app.name@",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -80,15 +80,15 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "client:build",
+            "browserTarget": "@grails.app.name@:build",
             "proxyConfig": "proxy.conf.json"
           },
           "configurations": {
             "production": {
-              "browserTarget": "client:build:production"
+              "browserTarget": "@grails.app.name@:build:production"
             },
             "hmr": {
-              "browserTarget": "client:build:hmr",
+              "browserTarget": "@grails.app.name@:build:hmr",
               "hmr": true
             }
           }
@@ -96,7 +96,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "client:build"
+            "browserTarget": "@grails.app.name@:build"
           }
         },
         "test": {
@@ -138,18 +138,18 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "client:serve"
+            "devServerTarget": "@grails.app.name@:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "client:serve:production"
+              "devServerTarget": "@grails.app.name@:serve:production"
             }
           }
         }
       }
     }
   },
-  "defaultProject": "client",
+  "defaultProject": "@grails.app.name@",
   "schematics": {
     "ng-alain:module": {
       "routing": true,
