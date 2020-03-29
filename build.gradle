@@ -32,3 +32,16 @@ repositories {
 dependencies {
     runtime "org.grails.profiles:rest-api:4.0.0.RC1"
 }
+
+processResources {
+    exclude ('**/node_modules/**')
+//    dependsOn gulp_build
+}
+
+jar {
+    exclude ('**/node_modules/**')
+}
+
+sourcesJar {
+    exclude ('**/node_modules/**')
+}
