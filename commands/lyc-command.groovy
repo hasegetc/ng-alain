@@ -27,6 +27,12 @@ if(args) {
         println it.toString()
     }
 
+    def values = newInstance.metaPropertyValues
+    values.each {
+        println it.name
+        println it.type
+    }
+
 }
 else {
     error "No argument specified"
