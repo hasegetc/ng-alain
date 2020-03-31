@@ -15,25 +15,18 @@ if(args) {
     def execute = command.execute()
     println execute.getText()
 
-    def createModuleCommand = "ng g ng-alain:module ${modelName}"
-    execute = createModuleCommand.execute(null, new File("../client"))
-    execute.waitFor()
+    def sourceClass = source(modelName)
 
+    def file = new File(sourceClass.toString())
+    Class parseClass = new GroovyClassLoader().parseClass(file);
+    GroovyObject newInstance = (GroovyObject) parseClass.newInstance();
 
-    createModuleCommand = "ng g ng-alain:curd curd -m ${modelName}"
-    execute.waitFor()
-    println createModuleCommand
+    def properties = newInstance.properties
 
-    execute = createModuleCommand.execute(null, new File("../client"))
+    properties.each {
+        println it.toString()
+    }
 
-    def model = model('/Users/lyc/SourceCode/test/grails-alain-test/server/grails-app/domain/xyz/lyc/Address')
-//    println model.asMap().toString()
-
-    println ""
-    println model.getPropertyName()
-
-    println args.toString()
-    println "liuyuchao"
 }
 else {
     error "No argument specified"
